@@ -1,0 +1,57 @@
+package edu.programacion.ejercicio2407;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Conjuntos {
+    private Set<Persona> elementos;
+
+    public Conjuntos() {
+        this.elementos = new HashSet<>();
+    }
+
+    public void add(Persona persona) {
+        elementos.add(persona);
+    }
+
+    public void remove(Persona persona) {
+        elementos.remove(persona);
+    }
+
+    public Conjuntos union(Set<Persona> set) {
+        Conjuntos resultado = new Conjuntos();
+        resultado.elementos.addAll(this.elementos);
+        resultado.elementos.addAll(set);
+        return resultado;
+    }
+
+    public Conjuntos interseccion(Set<Persona> set) {
+        Conjuntos resultado = new Conjuntos();
+        for (Persona p : this.elementos) {
+            if (set.contains(p)) {
+                resultado.add(p);
+            }
+        }
+        return resultado;
+    }
+
+    public Conjuntos diferencia(Set<Persona> set) {
+        Conjuntos resultado = new Conjuntos();
+        for (Persona p : this.elementos) {
+            if (!set.contains(p)) {
+                resultado.add(p);
+            }
+        }
+        return resultado;
+    }
+
+    public Conjuntos diferenciaSimetrica(Set<Persona> set) {
+        Conjuntos union = this.union(set);
+        Conjuntos inter = this.interseccion(set);
+        return union.diferencia(inter.elementos);
+    }
+
+    public Set<Persona> getElementos() {
+        return elementos;
+    }
+}

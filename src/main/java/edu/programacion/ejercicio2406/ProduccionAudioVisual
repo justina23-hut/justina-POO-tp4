@@ -1,0 +1,22 @@
+package edu.programacion.ejercicio2406;
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class ProduccionAudiovisual {
+    private String titulo;
+    private Integer anio;
+    private String genero;
+    private List<Actor> actores = new ArrayList<>();
+    private List<Director> directores = new ArrayList<>();
+    private List<Personaje> personajes = new ArrayList<>();
+
+    public ProduccionAudiovisual(String titulo, Integer anio, String genero) {
+        this.titulo = titulo;
+        this.anio = anio;
+        this.genero = genero;
+    }
+
+    public void agregarActor(Actor a) { actores.add(a); }
+    public void agregarDirector(Director d) { directores.add(d); }
+    public void agregarPersonaje(Personaje p) { personajes.add(p); }
+}
